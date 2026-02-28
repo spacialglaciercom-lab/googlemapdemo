@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Optimized and Fuel-Efficient Route Planner</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class="main-content">
+    <div class="control-panel">
+      <form id="compute-routes-form">
+        <section>
+          <h2>Route Planner</h2>
+          <div class="row">
+            <label>Routing Mode</label>
+            <div class="radio-group">
+              <input type="radio" id="mode-optimize" name="routing-mode" value="optimize" checked>
+              <label for="mode-optimize">Optimize Multi-Stop</label>
+              <input type="radio" id="mode-eco" name="routing-mode" value="eco">
+              <label for="mode-eco">Fuel-Efficient (A-to-B)</label>
+            </div>
+          </div>
+          <div class="row">
+            <label>Origin</label>
+            <div id="origin-input"></div>
+          </div>
+          <div id="waypoints-section">
+            <div class="row">
+              <label>Intermediate Waypoints</label>
+              <ul id="intermediate-waypoints-list"></ul>
+              <button type="button" id="add-waypoint-button" class="button-secondary">Add Waypoint</button>
+            </div>
+             <div class="row checkbox-row">
+              <input type="checkbox" name="optimize_waypoints" id="optimize_waypoints" checked />
+              <label for="optimize_waypoints">Optimize waypoints order</label>
+            </div>
+          </div>
+          <div class="row">
+            <label>Destination</label>
+            <div id="destination-input"></div>
+          </div>
+          <div id="eco-options-section" style="display: none;">
+            <h3>Eco-friendly options</h3>
+            <div class="row">
+              <label for="emission-type">Engine Type</label>
+              <select name="emission-type" id="emission-type">
+                <option value="DIESEL" selected>Diesel</option>
+                <option value="GASOLINE">Gasoline</option>
+                <option value="ELECTRIC">Electric</option>
+                <option value="HYBRID">Hybrid</option>
+              </select>
+            </div>
+          </div>
+        </section>
+        <button class="button-primary" type="submit">Get Route</button>
+      </form>
+      <div id="message-box"></div>
+    </div>
+    <div class="map-container">
+      <gmp-map id="map" class="map" center="42.9137921,-78.8637428" zoom="10" map-id="DEMO_MAP_ID"></gmp-map>
+    </div>
+  </div>
+  <script>(g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+      ({ key: "YOUR_API_KEY", v: "beta" });</script>
+  <script src="script.js"></script>
+</body>
+</html>
